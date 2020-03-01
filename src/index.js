@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import MainPage from "./components/MainPage";
 import LoginPage from "./components/LoginPage";
 import "./index.css";
+import UserContext from "./components/UserContext";
 
 class App extends React.Component {
   state = {
@@ -20,7 +21,9 @@ class App extends React.Component {
 
   render() {
     return this.state.currentUser ? (
-      <MainPage currentUser={this.state.currentUser} onLogout={this.handleLogout}/>
+      <UserContext.Provider value={this.state.currentUser}>
+        <MainPage onLogout={this.handleLogout}/>
+      </UserContext.Provider>
     ) : (
       <LoginPage onLogin={this.handleLogin} />
     );
