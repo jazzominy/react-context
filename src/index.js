@@ -5,6 +5,7 @@ import MainPage from "./components/MainPage";
 import LoginPage from "./components/LoginPage";
 import "./index.css";
 import { UserProvider, UserConsumer } from "./components/UserContext";
+import { EmailProvider } from "./components/EmailContext";
 
 const App = () => {
   return (
@@ -16,7 +17,9 @@ const App = () => {
 
 ReactDOM.render(
   <UserProvider>
-    <App />
+    <EmailProvider>
+      <App />
+    </EmailProvider>
   </UserProvider>,
   document.getElementById("root")
 );

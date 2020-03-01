@@ -1,5 +1,5 @@
 import React from "react";
-import {UserConsumer} from "./UserContext";
+import { UserConsumer } from "./UserContext";
 
 class UserMenu extends React.Component {
   state = {

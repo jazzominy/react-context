@@ -1,6 +1,6 @@
 import React from "react";
 import { login } from "./api";
-import {UserConsumer} from "./UserContext";
+import { UserConsumer } from "./UserContext";
 
 class LoginPage extends React.Component {
   state = {
