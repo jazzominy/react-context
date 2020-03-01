@@ -4,38 +4,19 @@ import ReactDOM from "react-dom";
 import MainPage from "./components/MainPage";
 import LoginPage from "./components/LoginPage";
 import "./index.css";
-import UserContext from "./components/UserContext";
+import { UserProvider, UserConsumer } from "./components/UserContext";
 
-class App extends React.Component {
-  state = {
-    currentUser: null
-  };
+const App = () => {
+  return (
+    <UserConsumer>
+      {({ currentUser }) => (currentUser ? <MainPage /> : <LoginPage />)}
+    </UserConsumer>
+  );
+};
 
-  handleLogin = user => {
-    this.setState({ currentUser: user });
-  };
-
-  handleLogout = () => {
-    this.setState({ currentUser: null });
-  };
-
-  render() {
-    return (
-      <UserContext.Provider
-        value={{
-          currentUser: this.state.currentUser,
-          onLogin: this.handleLogin,
-          onLogout: this.handleLogout
-        }}
-      >
-        {this.state.currentUser ? (
-          <MainPage />
-        ) : (
-          <LoginPage />
-        )}
-      </UserContext.Provider>
-    );
-  }
-}
-
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <UserProvider>
+    <App />
+  </UserProvider>,
+  document.getElementById("root")
+);
