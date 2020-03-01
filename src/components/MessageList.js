@@ -3,7 +3,7 @@ import UserContext from "./UserContext";
 
 const MessageList = () => (
   <UserContext.Consumer>
-    {currentUser => (
+    {({ currentUser }) => (
       <div className="MessageList">
         <div className="no-messages">
           Your mailbox is empty, {currentUser.firstName}! 🎉

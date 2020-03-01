@@ -4,7 +4,7 @@ import MessageList from './MessageList';
 
 const MainPage = ({ onLogout}) => (
     <main>
-        <Header onLogout={onLogout} />
+        <Header />
         <MessageList />
     </main>
 )
