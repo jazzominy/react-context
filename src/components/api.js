@@ -40,15 +40,34 @@ export function login(u, p) {
 }
 
 export function fetchEmails() {
-    return new Promise((done, oops) => {
-        setTimeout(() => {
-            if (true) {
-                done(FAKE_EMAILS);
-          } else {
-            oops({
-              message: "Invalid username or password"
-            });
-          }
+  return new Promise((done, oops) => {
+    setTimeout(() => {
+      if (true) {
+        done(
+          FAKE_EMAILS.map(e => ({
+            ...e,
+            id: Math.random()
+          })).slice(0, Math.floor(Math.random() * (FAKE_EMAILS.length + 1)))
+        );
+      } else {
+        oops({
+          message: "Invalid username or password"
         });
-      });
+      }
+    });
+  });
+}
+
+export function fetchLatestEmails() {
+  return new Promise((done, oops) => {
+    setTimeout(() => {
+      if (true) {
+        done(FAKE_EMAILS);
+      } else {
+        oops({
+          message: "Invalid username or password"
+        });
+      }
+    });
+  });
 }
