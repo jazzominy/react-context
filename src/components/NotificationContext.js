@@ -7,6 +7,21 @@ class NotificationProvider extends React.Component {
     messages: []
   };
 
+  componentDidMount() {
+    this.timer = setInterval(this.cleanup, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+  cleanup = () => {
+    let now = Date.now();
+
+    this.setState(state => ({
+      messages: state.messages.filter(m => now - m.addedAt < 3000)
+    }))
+  }
+
   addMessage = text => {
     this.setState(state => ({
       messages: [

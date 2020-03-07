@@ -39,7 +39,7 @@ export function login(u, p) {
   });
 }
 
-export function fetchEmails() {
+export function fetchLatestEmails() {
   return new Promise((done, oops) => {
     setTimeout(() => {
       if (true) {
@@ -58,7 +58,7 @@ export function fetchEmails() {
   });
 }
 
-export function fetchLatestEmails() {
+export function fetchEmails() {
   return new Promise((done, oops) => {
     setTimeout(() => {
       if (true) {
